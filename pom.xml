@@ -62,5 +62,6 @@
 
 	<modules>
 		<module>sail-center</module>
+		<module>sail-gateway</module>
 	</modules>
 </project>
