@@ -1,0 +1,38 @@
+---
+server:
+  port: 8061
+---
+management:
+  server:
+    port: 8061
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+---
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    ip-address: 10.10.0.51
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://10.10.0.51:8761/eureka/
+---
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri:  https://github.com/cunmin1718/springCloud-Learning.git
+          searchPaths: config-repo
+          username: cunmin1718
+          password: qq000000

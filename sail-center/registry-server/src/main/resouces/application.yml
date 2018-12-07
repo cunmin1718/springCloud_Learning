@@ -1,0 +1,31 @@
+---
+server:
+  port: 8761
+---
+management:
+  server:
+    port: 8761
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+---
+eureka:
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    ip-address: 10.10.0.51
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+---
+spring:
+  application:
+    name: registry-server
